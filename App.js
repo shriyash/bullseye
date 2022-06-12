@@ -2,14 +2,18 @@ import React from "react";
 import { Text, SafeAreaView, StyleSheet, TextInput } from "react-native";
 
 const App = () => {
-  const [text, onChangeText] = React.useState("Useless Text");
+  const [text, onChangeText] = React.useState("");
   const [number1, onChangeNumber1] = React.useState(null);
   const [number2, onChangeNumber2] = React.useState(null);
   const [number3, onChangeNumber3] = React.useState(null);
 
   let total = parseInt(number1)+parseInt(number2)+parseInt(number3);
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
+
+      <Text style={styles.titleText}>
+      {'\n'}{'\n'}{'\t'}Bullseye
+      </Text>
 
       <Text style={styles.titleText}>
       {'\n'}{'\n'}{'\t'}Round One
@@ -50,7 +54,7 @@ const App = () => {
 
 
       <Text style={styles.titleText}>
-            {'\n'}{'\n'}{'\t'}Result: {total !== NaN ? total : 'Fill out all numbers'}
+            {'\n'}{'\n'}{'\t'}Results: {total && <Text>{total}</Text>}
       </Text>
       {console.log(total !== NaN)}    
     </SafeAreaView>
@@ -58,6 +62,10 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#C8A2C8",
+    flex: 1
+  },
   input: {
     height: 40,
     margin: 12,
